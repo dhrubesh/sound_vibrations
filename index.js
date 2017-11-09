@@ -1,5 +1,6 @@
 window.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,1E3/60)}}();
 console.log('connected')
+// alert('Hey thanks for showing up!    --Dhrubesh')
 var canvas = document.getElementById('canvas'),
     context = canvas.getContext('2d'),
     canvasWidth = canvas.width = window.innerWidth,
@@ -72,3 +73,16 @@ var loop = function(){
 };
 
 loop();
+
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+ const recognition = new SpeechRecognition();
+ recognition.interimResults = true;
+ recognition.addEventListener('result', e => {
+   const transcript = Array.from(e.results)
+     .map(result => result[0])
+     .map(result => result.transcript)
+     .join('');
+     console.log(e.results)
+ });
+ recognition.addEventListener('end', recognition.start);
+ recognition.start();
