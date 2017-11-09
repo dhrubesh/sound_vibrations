@@ -83,6 +83,7 @@ window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogn
      .map(result => result.transcript)
      .join('');
      console.log(e.results)
+     console.log(e)
  });
  recognition.addEventListener('end', recognition.start);
  recognition.start();
